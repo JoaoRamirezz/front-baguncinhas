@@ -1,8 +1,7 @@
-import { Text, View, TextInput, TouchableOpacity } from "react-native";
+import { Text, View, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { useContext } from "react";
 import { utilsContext } from "../../contexts/SignUpContext";
 import { useState } from "react";
-import styleLogin from "./style";
 
 
 export function Login(props) {
@@ -57,3 +56,70 @@ export function Login(props) {
         </View>
     );
 }
+
+const styleLogin = StyleSheet.create({
+    input: {
+      height: 40,
+      marginLeft: 40,
+      marginRight: 40,
+      marginTop: 10,
+      padding: 10,
+      backgroundColor: "white",
+      borderRadius: 5,
+      backgroundColor: "#65F4F2",
+      height: 50,
+      borderRadius: 20
+    },
+  
+    bg: {
+      backgroundColor: "#36CECC",
+      height: "100%",
+      display: "flex",
+      justifyContent: "space-between",
+    },
+  
+    bgUsers: {
+      backgroundColor: "lightgray",
+      height: "100%",
+    },
+  
+    inputs1: {
+      flexDirection: "row",
+      alignItems: "center",
+    },
+  
+    textView: {
+      marginLeft: 40,
+      marginTop: 20,
+    },
+  
+    switch: {
+      marginLeft: 12,
+    },
+  
+    button: {
+      padding: 10,
+      margin: 12,
+      backgroundColor: "#176585",
+      borderRadius: 20
+    },
+    button1: {
+      padding: 10,
+      margin: 12,
+    },
+  
+    textbutton: {
+      textAlign: "center",
+    },
+  
+    title: {
+      marginTop: "10%",
+      marginBottom: "10%",
+      fontSize: 100,
+      textAlign: "center",
+    },
+  
+    titleUsers: {
+      fontSize: 70,
+    },
+  });
