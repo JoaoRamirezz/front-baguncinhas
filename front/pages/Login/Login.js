@@ -1,4 +1,4 @@
-import { Text, View, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, View, TextInput, TouchableOpacity, StyleSheet, Image} from "react-native";
 import { useContext } from "react";
 import { utilsContext } from "../../contexts/SignUpContext";
 import { useState } from "react";
@@ -10,17 +10,21 @@ export function Login(props) {
     const [senha, setSenha] = useState("");
 
     function login() {
-        data.forEach((u) => {
-            if (u.email == email && u.senha == senha)
-                props.navigation.navigate("Users");
-        });
+      props.navigation.navigate("Home")
+        // data.forEach((u) => {
+        //     if (u.email == email && u.senha == senha)
+        //         props.navigation.navigate("Users");
+        // });
     }
 
 
     return (
         <View style={styleLogin.bg}>
             <View>
-                <Text style={styleLogin.title}>Login</Text>
+                <Image
+                  style = {styleLogin.Logo}
+                  source={require('../../assets/Logo.png')}
+                />
                 <Text style={styleLogin.textView}>Email:</Text>
                 <TextInput
                     style={styleLogin.input}
@@ -58,6 +62,12 @@ export function Login(props) {
 }
 
 const styleLogin = StyleSheet.create({
+    Logo:{
+      width: 400,
+      height: 250
+    },
+
+
     input: {
       height: 40,
       marginLeft: 40,
