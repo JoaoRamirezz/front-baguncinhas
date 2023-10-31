@@ -3,28 +3,39 @@ import {
   Text,
   View,
   TextInput,
-  TouchableOpacity,
-  Switch
+  TouchableOpacity
 } from "react-native";
-import { useContext, useState } from "react";
-import { utilsContext } from "../../contexts/SignUpContext";
-// import styleSignUp from "./style";
-
+import { useState } from "react";
+import axios from "axios";
 
 export function SignUp(props) {
- 
-
-  const { data, setData } = useContext(utilsContext)
   const [nome, setNome] = useState("");
-  const [idade, setIdade] = useState("");
-  const [sexo, setSexo] = useState("");
+  const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [confirmarsenha, setConfirmarSenha] = useState("");
-  const [notificacao, setNotificacao] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  function cadastrar() {
-    setData([...data, { nome, idade, sexo, email, senha, notificacao }])
+  const signUp = async () => {
+    // Password didn't match
+    if (password !== confirmPassword)
+      return;
+
+    // Invalid data
+    if (!nome || !age || !email || !password)
+      return;
+    
+    const data = {
+      email,
+      firstName: 'string',
+      lastName: 'string',
+      password: 'string',
+      CPF: 'string',
+    }
+
+    console.log(data)
+    const res = await axios.post('http://localhost:8080/api/user/');
+    console.log(res);
+
     props.navigation.navigate("Login")
   }
 
@@ -49,18 +60,7 @@ export function SignUp(props) {
             multiline
             numberOfLines={1}
             width={20}
-            onChangeText={(text) => setIdade(text)}
-          />
-        </View>
-
-        <View>
-          <Text style={styleSignUp.textView}>Sexo:</Text>
-          <TextInput
-            style={styleSignUp.input3}
-            multiline
-            numberOfLines={1}
-            width={2}
-            onChangeText={(text) => setSexo(text)}
+            onChangeText={(text) => setAge(text)}
           />
         </View>
       </View>
@@ -85,7 +85,7 @@ export function SignUp(props) {
           maxLength={20}
           numberOfLines={2}
           width={10}
-          onChangeText={(text) => setSenha(text)}
+          onChangeText={(text) => setPassword(text)}
         />
       </View>
 
@@ -97,20 +97,12 @@ export function SignUp(props) {
           maxLength={20}
           numberOfLines={2}
           width={10}
-          onChangeText={(text) => setConfirmarSenha(text)}
+          onChangeText={(text) => setConfirmPassword(text)}
         />
       </View>
 
-      <Text style={styleSignUp.textView}>Deseja receber notificações?</Text>
-      <Switch
-        style={styleSignUp.switch}
-        trackColor={{ false: "#767577", true: "#810bff" }}
-        value={notificacao}
-        onValueChange={() => setNotificacao(!notificacao)}
-      />
-
       <View style={styleSignUp.buttonLogin}>
-        <TouchableOpacity style={styleSignUp.button} onPress={() => cadastrar()}>
+        <TouchableOpacity style={styleSignUp.button} onPress={() => signUp()}>
           <Text style={styleSignUp.textbutton}>Login</Text>
         </TouchableOpacity>
 
