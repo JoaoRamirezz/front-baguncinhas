@@ -12,7 +12,7 @@ import { UserPage } from "./pages/UserPage/userpage";
 
 export default function App() {
   const Stack = createStackNavigator();
-  const [data,setData] = useState([])
+  const [data, setData] = useState([])
 
   return (
     <utilsContext.Provider value = {{data, setData}}>
