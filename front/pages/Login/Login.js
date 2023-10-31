@@ -10,7 +10,7 @@ export function Login(props) {
     const [senha, setSenha] = useState("");
 
     function login() {
-      props.navigation.navigate("Home")
+      props.navigation.navigate("Filter")
         // data.forEach((u) => {
         //     if (u.email == email && u.senha == senha)
         //         props.navigation.navigate("Users");
