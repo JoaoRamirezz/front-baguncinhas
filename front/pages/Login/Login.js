@@ -1,8 +1,6 @@
 import { Text, View, TextInput, TouchableOpacity, StyleSheet, Image} from "react-native";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { utilsContext } from "../../contexts/SignUpContext";
-import { useState } from "react";
-
 
 export function Login(props) {
     const { data, setData } = useContext(utilsContext);
@@ -10,7 +8,7 @@ export function Login(props) {
     const [senha, setSenha] = useState("");
 
     function login() {
-      props.navigation.navigate("Home")
+      props.navigation.navigate("Filter")
         // data.forEach((u) => {
         //     if (u.email == email && u.senha == senha)
         //         props.navigation.navigate("Users");
