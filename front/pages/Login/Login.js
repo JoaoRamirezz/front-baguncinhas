@@ -1,8 +1,6 @@
 import { Text, View, TextInput, TouchableOpacity, StyleSheet, Image} from "react-native";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { utilsContext } from "../../contexts/SignUpContext";
-import { useState } from "react";
-
 
 export function Login(props) {
     const { data, setData } = useContext(utilsContext);
