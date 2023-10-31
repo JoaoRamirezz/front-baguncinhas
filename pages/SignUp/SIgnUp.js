@@ -29,14 +29,13 @@ export function SignUp(props) {
       firstName: 'string',
       lastName: 'string',
       password: 'string',
-      CPF: 'string',
+      CPF: 'string2',
     }
 
-    console.log(data)
-    const res = await axios.post('http://localhost:8080/api/user/');
-    console.log(res);
-
-    props.navigation.navigate("Login")
+    const res = await axios.post('http://localhost:8080/api/user/', data);
+    if (res.status === 201) {
+      props.navigation.navigate("Login")
+    }
   }
 
   return (

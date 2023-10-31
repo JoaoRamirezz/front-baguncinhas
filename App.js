@@ -18,9 +18,9 @@ export default function App() {
     <utilsContext.Provider value = {{data, setData}}>
       <NavigationContainer>
         <Stack.Navigator>
-        <Stack.Screen name="Filter" component={Filter} />
-        <Stack.Screen name="SelectedHotel" component={SelectedHotel} />
           <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="Filter" component={Filter} />
+          <Stack.Screen name="SelectedHotel" component={SelectedHotel} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="User" component={UserPage} />
