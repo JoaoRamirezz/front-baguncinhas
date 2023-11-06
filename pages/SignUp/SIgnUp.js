@@ -35,6 +35,7 @@ export function SignUp(props) {
 
     const res = await axios.post("http://localhost:8080/api/user/", data);
     if (res.status === 201) {
+      sessionStorage.setItem("token", res.data)
       props.navigation.navigate("Login");
     }
   };

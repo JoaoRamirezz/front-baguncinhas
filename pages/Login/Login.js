@@ -1,18 +1,24 @@
 import { Text, View, TextInput, TouchableOpacity, StyleSheet, Image} from "react-native";
-import { useContext, useState } from "react";
-import { utilsContext } from "../../contexts/SignUpContext";
+import { useState } from "react";
+import axios from "axios";
 
 export function Login(props) {
-    const { data, setData } = useContext(utilsContext);
     const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
+    const [password, setPassword] = useState("");
 
-    function login() {
-      props.navigation.navigate("Filter")
-        // data.forEach((u) => {
-        //     if (u.email == email && u.senha == senha)
-        //         props.navigation.navigate("Users");
-        // });
+    const login = async () => {
+      const data = {
+        email,
+        password
+      }
+
+      axios
+      const res = await axios.post("http://localhost:8080/api/user/login", data);
+      
+      if (res.status === 200) {
+        sessionStorage.setItem("token", res.data)
+        props.navigation.navigate("Home")
+      }
     }
 
 
@@ -39,7 +45,7 @@ export function Login(props) {
                     maxLength={20}
                     numberOfLines={2}
                     width={10}
-                    onChangeText={(text) => setSenha(text)}
+                    onChangeText={(text) => setPassword(text)}
                 />
             </View>
 

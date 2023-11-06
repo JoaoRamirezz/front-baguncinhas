@@ -13,16 +13,16 @@ import { UserPage } from "./pages/UserPage/userpage";
 export default function App() {
   const Stack = createStackNavigator();
   const [data, setData] = useState([])
-
+  
   return (
     <utilsContext.Provider value = {{data, setData}}>
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen name="Filter" component={Filter} />
           <Stack.Screen name="SelectedHotel" component={SelectedHotel} />
-          <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="User" component={UserPage} />
         </Stack.Navigator>
       </NavigationContainer>
