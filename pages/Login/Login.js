@@ -25,7 +25,6 @@ export function Login(props) {
         Authorization: authorization,
       },
     };
-    console.log(config)
     const res = await axios.get("http://localhost:8080/api/auth", config)
 
     if (res.status === 200 || res.status === 204) {
