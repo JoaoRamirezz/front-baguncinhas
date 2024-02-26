@@ -1,139 +1,135 @@
-import { Text, View, TextInput, TouchableOpacity, StyleSheet, Image} from "react-native";
+import { Text, View, TouchableOpacity, StyleSheet, Image, ImageBackground } from "react-native";
+import { TextInput, Button } from 'react-native-paper';
 import { useState } from "react";
 import axios from "axios";
+import { Buffer } from "buffer";
 
 export function Login(props) {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const login = async () => {
-      const data = {
-        email,
-        password
-      }
+  const login = async () => {
+    const data = {
+      email,
+      password
+    };
 
-      axios
-      const res = await axios.post("http://localhost:8080/api/user/login", data);
-      
-      if (res.status === 200) {
-        sessionStorage.setItem("token", res.data)
-        props.navigation.navigate("Home")
-      }
+    const base64 = Buffer.from(`${data.email}:${data.password}`).toString(
+      'base64',
+    );
+
+    const authorization = `Basic ${base64}`;
+
+    const config = {
+      headers: {
+        Authorization: authorization,
+      },
+    };
+    console.log(config)
+    const res = await axios.get("http://localhost:8080/api/auth", config)
+
+    if (res.status === 200 || res.status === 204) {
+      sessionStorage.setItem("token", res.data)
+      props.navigation.navigate("Home")
     }
 
+  };
 
-    return (
-        <View style={styleLogin.bg}>
-            <View>
-                <Image
-                  style = {styleLogin.Logo}
-                  source={require('../../assets/Logo.png')}
-                />
-                <Text style={styleLogin.textView}>Email:</Text>
-                <TextInput
-                    style={styleLogin.input}
-                    multiline
-                    maxLength={20}
-                    numberOfLines={2}
-                    width={10}
-                    onChangeText={(text) => setEmail(text)}
-                />
-                <Text style={styleLogin.textView}>Senha:</Text>
-                <TextInput
-                    style={styleLogin.input}
-                    multiline
-                    maxLength={20}
-                    numberOfLines={2}
-                    width={10}
-                    onChangeText={(text) => setPassword(text)}
-                />
-            </View>
+  // const login = async () => {
+  //   const data = {
+  //     email,
+  //     password
+  //   }
 
-            <View style={styleLogin.buttonLogin}>
-                <TouchableOpacity style={styleLogin.button} onPress={() => login()}>
-                    <Text style={styleLogin.textbutton}>Login</Text>
-                </TouchableOpacity>
+  //   axios
+  //   const res = await axios.post("http://localhost:8080/api/user/login", data);
 
-                <TouchableOpacity
-                    style={styleLogin.button1}
-                    onPress={() => props.navigation.navigate("SignUp")}
-                >
-                    <Text style={styleLogin.textbutton}>Cadastrar</Text>
-                </TouchableOpacity>
-            </View>
+  //   if (res.status === 200) {
+  //     sessionStorage.setItem("token", res.data)
+  //     props.navigation.navigate("Home")
+  //   }
+  // }
+
+
+  return (
+    <ImageBackground
+      source={require('../../assets/Bgs/BackgroundLogin.png')}
+      style={{ width: 400, height: 1000 }}
+    >
+      <View style={styleLogin.bg}>
+
+
+        <View>
+          <Image
+            style={styleLogin.Logo}
+            source={require('../../assets/LogoBgcPlanes.png')}
+          />
+
+          <TextInput
+            label="Email"
+            onChangeText={(text) => setEmail(text)}
+            mode="outlined"
+            style={styleLogin.input}
+          />
+
+
+          <TextInput
+            label="Senha"
+            onChangeText={(text) => setPassword(text)}
+            mode="outlined"
+            style={styleLogin.input}
+          />
         </View>
-    );
+
+
+        <View style={styleLogin.buttonLogin}>
+          <Button mode="contained" onPress={() => login()} style={styleLogin.button}>
+            Login
+          </Button>
+
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate("SignUp")}
+          >
+            <Text style={styleLogin.textbutton}>Ainda não possui uma conta? Cadastre-se</Text>
+          </TouchableOpacity>
+        </View>
+
+
+      </View >
+    </ImageBackground>
+  );
 }
 
 const styleLogin = StyleSheet.create({
-    Logo:{
-      width: 400,
-      height: 250
-    },
+  Logo: {
+    marginTop: 100,
+    width: 400,
+    height: 250
+  },
 
 
-    input: {
-      height: 40,
-      marginLeft: 40,
-      marginRight: 40,
-      marginTop: 10,
-      padding: 10,
-      backgroundColor: "white",
-      borderRadius: 5,
-      backgroundColor: "#65F4F2",
-      height: 50,
-      borderRadius: 20
-    },
-  
-    bg: {
-      backgroundColor: "#36CECC",
-      height: "100%",
-      display: "flex",
-      justifyContent: "space-between",
-    },
-  
-    bgUsers: {
-      backgroundColor: "lightgray",
-      height: "100%",
-    },
-  
-    inputs1: {
-      flexDirection: "row",
-      alignItems: "center",
-    },
-  
-    textView: {
-      marginLeft: 40,
-      marginTop: 20,
-    },
-  
-    switch: {
-      marginLeft: 12,
-    },
-  
-    button: {
-      padding: 10,
-      margin: 12,
-      backgroundColor: "#176585",
-      borderRadius: 20
-    },
-    button1: {
-      padding: 10,
-      margin: 12,
-    },
-  
-    textbutton: {
-      textAlign: "center",
-    },
-  
-    title: {
-      marginTop: "10%",
-      marginBottom: "10%",
-      fontSize: 100,
-      textAlign: "center",
-    },
-  
-    titleUsers: {
-      fontSize: 70,
-    },
-  });
+  input: {
+    height: 30,
+    alignSelf: "center",
+    padding: 10,
+    backgroundColor: 'rgba(255,255,255,0.5)',
+    borderColor: 'rgba(255,255,255,0.5)',
+    marginTop: 20,
+    borderRadius: 20,
+  },
+
+
+  button: {
+    padding: 10,
+    marginHorizontal: 75,
+    marginTop: 30,
+    backgroundColor: "#D5A23E",
+    borderRadius: 20,
+  },
+
+  textbutton: {
+    marginTop: 10,
+    textAlign: "center",
+  },
+});
+

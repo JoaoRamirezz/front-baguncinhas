@@ -6,15 +6,14 @@ import axios from "axios";
 export function Home(props) {
     const [hoteis, setHoteis] = useState([])
 
-    useEffect(() => {
-        async function getData() {
-            const res = await axios.get('http://localhost:8080/api/hotel/')
-            console.log(res)
-            setHoteis(res.data)
-        }
+    // useEffect(() => {
+    //     async function getData() {
+    //         const res = await axios.get('http://localhost:8080/api/hotel/')
+    //         setHoteis(res.data)
+    //     }
 
-        getData()
-    }, [])
+    //     getData()
+    // }, [])
 
     return (
         <>

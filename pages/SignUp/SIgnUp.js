@@ -2,11 +2,14 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput,
   TouchableOpacity,
+  ImageBackground,
+  Image
 } from "react-native";
 import { useState } from "react";
 import axios from "axios";
+import { TextInput, Button } from 'react-native-paper';
+
 
 export function SignUp(props) {
   const [firstName, setNome] = useState("");
@@ -41,109 +44,116 @@ export function SignUp(props) {
   };
 
   return (
-    <View style={styleSignUp.bg}>
-      <View style={styleSignUp.inputs1}>
+    <ImageBackground
+      source={require('../../assets/Bgs/BackgroundCadastro.png')}
+      style={{ width: 400, height: 1000 }}
+    >
+      <View style={StyleSignUp.bg}>
+
+
         <View>
-          <Text style={styleSignUp.textView}>Primeiro nome: </Text>
+          <Image
+            style={StyleSignUp.Logo}
+            source={require('../../assets/LogoBgcPlanes.png')}
+          />
           <TextInput
-            style={styleSignUp.input}
-            maxLength={20}
-            onChangeText={(text) => setNome(text)}
+            label="Primeiro Nome"
+            onChangeText={(text) => setEmail(text)}
+            mode="outlined"
+            style={StyleSignUp.input}
+          />
+
+          <TextInput
+            label="Ultimo Nome"
+            onChangeText={(text) => setPassword(text)}
+            mode="outlined"
+            style={StyleSignUp.input}
+            textColor="white"
+          />
+
+          <View style={StyleSignUp.passwordConfirm}>
+            <TextInput
+              label="Senha"
+              onChangeText={(text) => setPassword(text)}
+              mode="outlined"
+              style={StyleSignUp.inputPass}
+              textColor="white"
+            />
+
+            <TextInput
+              label="Confirmar Senha"
+              onChangeText={(text) => setPassword(text)}
+              mode="outlined"
+              style={StyleSignUp.inputPass}
+              textColor="white"
+            />
+          </View>
+
+          <TextInput
+            label="CPF"
+            onChangeText={(text) => setPassword(text)}
+            mode="outlined"
+            style={StyleSignUp.input}
+            textColor="white"
+          />
+          <TextInput
+            label="Data de Nascimento"
+            onChangeText={(text) => setPassword(text)}
+            mode="outlined"
+            style={StyleSignUp.input}
+            textColor="white"
           />
         </View>
 
-        <View>
-          <Text style={styleSignUp.textView}>Ultimo nome: </Text>
-          <TextInput
-            style={styleSignUp.input}
-            maxLength={20}
-            onChangeText={(text) => setSobrenome(text)}
-          />
-        </View>
-      </View>
 
-      <View style={styleSignUp.inputs1}>
-        <View>
-          <Text style={styleSignUp.textView}>Data nascimento:</Text>
-          <TextInput
-            style={styleSignUp.input}
-            onChangeText={(text) => setAge(text)}
-          />
+        <View style={StyleSignUp.buttonLogin}>
+          <Button mode="contained" onPress={() => login()} style={StyleSignUp.button}>
+            Cadastrar
+          </Button>
+
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate("Login")}
+          >
+            <Text style={StyleSignUp.textbutton}>Cancelar</Text>
+          </TouchableOpacity>
         </View>
 
-        <View>
-          <Text style={styleSignUp.textView}>CPF:</Text>
-          <TextInput
-            style={styleSignUp.input}
-            onChangeText={(text) => setCPF(text)}
-          />
-        </View>
-      </View>
 
-      <View>
-        <Text style={styleSignUp.textView}>Email:</Text>
-        <TextInput
-          style={styleSignUp.input}
-          maxLength={20}
-          onChangeText={(text) => setEmail(text)}
-        />
-      </View>
-
-      <View>
-        <Text style={styleSignUp.textView}>Senha:</Text>
-        <TextInput
-          style={styleSignUp.input}
-          maxLength={20}
-          onChangeText={(text) => setPassword(text)}
-        />
-      </View>
-
-      <View>
-        <Text style={styleSignUp.textView}>Confirmar Senha:</Text>
-        <TextInput
-          style={styleSignUp.input}
-          maxLength={20}
-          onChangeText={(text) => setConfirmPassword(text)}
-        />
-      </View>
-
-      <View style={styleSignUp.buttonLogin}>
-        <TouchableOpacity style={styleSignUp.button} onPress={() => signUp()}>
-          <Text style={styleSignUp.textbutton}>Login</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styleSignUp.button1}
-          onPress={() => props.navigation.navigate("Login")}
-        >
-          <Text style={styleSignUp.textbutton}>Cancelar</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+      </View >
+    </ImageBackground>
   );
 }
 
-const styleSignUp = StyleSheet.create({
-  bg: {
-    backgroundColor: "#36CECC",
-    height: "100%",
-    display: "flex"
+const StyleSignUp = StyleSheet.create({
+  Logo: {
+    marginTop: 25,
+    width: 400,
+    height: 250
   },
 
 
   input: {
-    marginHorizontal: 40,
-    marginTop: 10,
+    height: 30,
+    alignSelf: "center",
     padding: 10,
-    backgroundColor: "#65F4F2",
-    height: 45,
-    borderRadius: 20
+    backgroundColor: 'rgba(255,255,255,0.5)',
+    borderColor: 'rgba(255,255,255,0.5)',
+    marginTop: 20,
+    borderRadius: 20,
+    width: 300
   },
 
-  textView: {
-    marginLeft: 40,
+  inputPass:{
+    height: 30,
+    alignSelf: "center",
+    padding: 10,
+    backgroundColor: 'rgba(255,255,255,0.5)',
+    borderColor: 'rgba(255,255,255,0.5)',
     marginTop: 20,
+    borderRadius: 20,
+    width: 145
   },
+
 
   button: {
     padding: 10,
@@ -153,12 +163,20 @@ const styleSignUp = StyleSheet.create({
     borderRadius: 20
   },
 
-  button1: {
-    padding: 10,
-    margin: 12
+  textbutton: {
+    marginTop:10,
+    textAlign: "center"
   },
 
-  textbutton: {
-    textAlign: "center"
+  passwordConfirm: {
+    display:"flex",
+    flexDirection:"row",
+    justifyContent: "space-evenly",
+    width: "80%",
+    alignSelf:"center"
+  },
+
+  bg: {
+    width: "100%"
   }
 });
