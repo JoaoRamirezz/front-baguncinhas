@@ -47,8 +47,8 @@ export function Home(props) {
                 <Text style = {styleHome.HotelName}>Hotel Bonito</Text>
                 <Text style = {styleHome.HotelDate}>5-10 nov</Text>
                 <Text style = {styleHome.HotelPrice}>R$1980,00</Text>
-                <TouchableOpacity style={styleHome.HotelButton}>
-                    <Text style={styleHome}>Reservar</Text>
+                <TouchableOpacity style={styleHome.HotelButton}  onPress={() => props.navigation.navigate("SelectedPackage")}>
+                    <Text style={styleHome}>Ver Mais</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -62,7 +62,7 @@ const styleHome = StyleSheet.create ({
     },
 
     HotelButton: {
-        backgroundColor: "#4DCC4B",
+        backgroundColor: "#FFFFFF",
         borderRadius: 5,
         padding: 5,
         width: "23%",
@@ -87,7 +87,8 @@ const styleHome = StyleSheet.create ({
     
     bg: {
         alignItems: "center",
-        backgroundColor: "#EBF8F7"
+        backgroundColor: "#EABDA4",
+        height: "100%"
     }
 
 
