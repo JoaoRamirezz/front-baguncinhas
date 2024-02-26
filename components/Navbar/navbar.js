@@ -57,8 +57,7 @@ const styleNav = StyleSheet.create ({
     all: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-evenly",
-        backgroundColor: "#EABDA4"
+        justifyContent: "space-evenly"
     },
 
     two: {
