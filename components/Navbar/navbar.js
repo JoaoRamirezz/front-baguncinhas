@@ -2,9 +2,11 @@
 
 import { BackHandler, StyleSheet, TextInput, TouchableOpacity, View} from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useNavigation } from "@react-navigation/native";
 
 
 export default function Navbar(props) {
+    const navigation = useNavigation()
     return (
         <View style = {styleNav.all}>
 
@@ -20,14 +22,14 @@ export default function Navbar(props) {
             </View>
 
             <View style = {styleNav.two}>
-                <TouchableOpacity onPress={() => props.navigation.navigate("Filter")}>
+                <TouchableOpacity onPress={() => navigation.navigate("Filter")}>
                     <Ionicons name="filter-outline" size={32} color="black"
                      />
                 </TouchableOpacity>
             </View>
 
             <View style = {styleNav.three}>
-                <TouchableOpacity onPress={() => props.navigation.navigate("User")} >
+                <TouchableOpacity onPress={() => navigation.navigate("User")} >
                     <Ionicons name="person-circle-outline" size={50} color="black"
                     />
                 </TouchableOpacity>
