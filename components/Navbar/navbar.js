@@ -1,16 +1,15 @@
-
-
-import { BackHandler, StyleSheet, TextInput, TouchableOpacity, View} from "react-native";
+import { BackHandler, StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
+import { Icon } from "react-native-paper";
 
 
-export default function Navbar(props) {
+export default function Navbar() {
     const navigation = useNavigation()
     return (
-        <View style = {styleNav.all}>
+        <View style={styleNav.all}>
 
-            <View style = {styleNav.one}>
+            <View style={styleNav.one}>
                 <TextInput
                     style={styleNav.styleinput}
                     multiline
@@ -21,16 +20,20 @@ export default function Navbar(props) {
                 />
             </View>
 
-            <View style = {styleNav.two}>
+            <View style={styleNav.two}>
                 <TouchableOpacity onPress={() => navigation.navigate("Filter")}>
-                    <Ionicons name="filter-outline" size={32} color="black"
-                     />
+                    <Icon
+                        source="filter"
+                        size={50}
+                    />
                 </TouchableOpacity>
             </View>
 
-            <View style = {styleNav.three}>
+            <View style={styleNav.three}>
                 <TouchableOpacity onPress={() => navigation.navigate("User")} >
-                    <Ionicons name="person-circle-outline" size={50} color="black"
+                    <Icon
+                        source="account-circle"
+                        size={50}
                     />
                 </TouchableOpacity>
             </View>
@@ -39,8 +42,8 @@ export default function Navbar(props) {
 }
 
 
-const styleNav = StyleSheet.create ({
-    styleinput:{
+const styleNav = StyleSheet.create({
+    styleinput: {
         marginTop: 10,
         padding: 10,
         borderRadius: 5,
@@ -48,7 +51,7 @@ const styleNav = StyleSheet.create ({
 
         borderRadius: 20,
         shadowColor: '#171717',
-        shadowOffset: {width: 6, height: 4},
+        shadowOffset: { width: 6, height: 4 },
         shadowOpacity: 0.2,
         shadowRadius: 3,
 
@@ -59,12 +62,11 @@ const styleNav = StyleSheet.create ({
     all: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-evenly",
-        backgroundColor: "#EABDA4"
+        justifyContent: "space-evenly"
     },
 
     two: {
-        marginTop: 17,
+        marginTop: 10,
     },
 
     three: {
