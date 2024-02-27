@@ -30,7 +30,7 @@ export function SelectedPackage(props) {
                 <Text style={styleSelectedPackage.negrito}>Volta: <Text style={styleSelectedPackage.normal}>10 nov - 10:00</Text></Text>
                 <Text style={styleSelectedPackage.negrito}>Tipo: <Text style={styleSelectedPackage.normal}>Avião</Text></Text>
                 <Text style={styleSelectedPackage.negrito}>Classe: <Text style={styleSelectedPackage.normal}>Econômica</Text></Text>
-                <TouchableOpacity style={styleSelectedPackage.Escolher}>Escolher outro horário</TouchableOpacity>
+                <TouchableOpacity style={styleSelectedPackage.Escolher} onPress={() => props.navigation.navigate("EscolherHorario")}>Escolher outro horário</TouchableOpacity>
             </View>
 
             <View style={styleSelectedPackage.whiteDiv}>

@@ -1,4 +1,4 @@
-import { Text, View, TextInput, TouchableOpacity, StyleSheet, Image} from "react-native";
+import { Text, View, TouchableOpacity, StyleSheet, Image, ImageBackground } from "react-native";
 import Navbar from "../../components/Navbar/navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -17,46 +17,51 @@ export function Home(props) {
 
     return (
         <>
-        <Navbar/>
-        <View style = {styleHome.bg}>
-            {hoteis.map((hotel, index) => {
-                return (
-                    <View style = {styleHome.Hotel} key={index}>
+            <ImageBackground
+                source={require('../../assets/Bgs/BackgroundColor.png')}
+                style={{ width: 400, height: 1000 }}
+            >
+                <Navbar />
+                <View style={styleHome.bg}>
+                    {hoteis.map((hotel, index) => {
+                        return (
+                            <View style={styleHome.Hotel} key={index}>
+                                <Image
+                                    style={styleHome.HotelImg}
+                                    source={require('../../assets/image3.png')}
+                                />
+
+                                <Text style={styleHome.HotelName}>{hotel.name}</Text>
+                                <Text style={styleHome.HotelDate}>5-10 nov</Text>
+                                <Text style={styleHome.HotelPrice}>R$ {hotel.bestPrice}.00</Text>
+                                <TouchableOpacity style={styleHome.HotelButton}>
+                                    <Text style={styleHome}>Reservar</Text>
+                                </TouchableOpacity>
+                            </View>
+                        )
+                    })}
+
+
+                    <View style={styleHome.Hotel}>
                         <Image
-                            style = {styleHome.HotelImg}
+                            style={styleHome.HotelImg}
                             source={require('../../assets/image3.png')}
                         />
 
-                        <Text style = {styleHome.HotelName}>{hotel.name}</Text>
-                        <Text style = {styleHome.HotelDate}>5-10 nov</Text>
-                        <Text style = {styleHome.HotelPrice}>R$ {hotel.bestPrice}.00</Text>
-                        <TouchableOpacity style={styleHome.HotelButton}>
-                            <Text style={styleHome}>Reservar</Text>
+                        <Text style={styleHome.HotelName}>Hotel Bonito</Text>
+                        <Text style={styleHome.HotelDate}>5-10 nov</Text>
+                        <Text style={styleHome.HotelPrice}>R$1980,00</Text>
+                        <TouchableOpacity style={styleHome.HotelButton} onPress={() => props.navigation.navigate("SelectedPackage")}>
+                            <Text style={styleHome}>Ver Mais</Text>
                         </TouchableOpacity>
                     </View>
-                )
-            })}
-            
-
-            <View style = {styleHome.Hotel}>
-                <Image
-                    style = {styleHome.HotelImg}
-                    source={require('../../assets/image3.png')}
-                />
-
-                <Text style = {styleHome.HotelName}>Hotel Bonito</Text>
-                <Text style = {styleHome.HotelDate}>5-10 nov</Text>
-                <Text style = {styleHome.HotelPrice}>R$1980,00</Text>
-                <TouchableOpacity style={styleHome.HotelButton}  onPress={() => props.navigation.navigate("SelectedPackage")}>
-                    <Text style={styleHome}>Ver Mais</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
+                </View>
+            </ImageBackground>
         </>
     )
 }
 
-const styleHome = StyleSheet.create ({
+const styleHome = StyleSheet.create({
     Hotel: {
         paddingTop: 20,
     },
@@ -69,12 +74,12 @@ const styleHome = StyleSheet.create ({
         marginTop: 5
     },
 
-    HotelImg:{
+    HotelImg: {
         width: 300,
         height: 250,
         borderRadius: 10
     },
-    HotelName:{
+    HotelName: {
         fontSize: 20,
     },
     HotelDate: {
@@ -84,11 +89,11 @@ const styleHome = StyleSheet.create ({
         fontSize: 15,
         textDecorationLine: 'underline'
     },
-    
+
     bg: {
         alignItems: "center",
         backgroundColor: "#EABDA4",
-        height: "100%"
+        // height: "100%"
     }
 
 
