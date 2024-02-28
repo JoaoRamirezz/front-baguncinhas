@@ -30,7 +30,7 @@ export default function Navbar() {
             </View>
 
             <View style={styleNav.three}>
-                <TouchableOpacity onPress={() => navigation.navigate("User")} >
+                <TouchableOpacity onPress={() => navigation.navigate("UserPage")} >
                     <Icon
                         source="account-circle"
                         size={50}

@@ -143,7 +143,7 @@ const StyleSignUp = StyleSheet.create({
     width: 300
   },
 
-  inputPass:{
+  inputPass: {
     height: 30,
     alignSelf: "center",
     padding: 10,
@@ -164,16 +164,16 @@ const StyleSignUp = StyleSheet.create({
   },
 
   textbutton: {
-    marginTop:10,
+    marginTop: 10,
     textAlign: "center"
   },
 
   passwordConfirm: {
-    display:"flex",
-    flexDirection:"row",
+    display: "flex",
+    flexDirection: "row",
     justifyContent: "space-evenly",
     width: "80%",
-    alignSelf:"center"
+    alignSelf: "center"
   },
 
   bg: {
