@@ -1,6 +1,8 @@
 import { TouchableOpacity } from "react-native";
 import { View, StyleSheet, Text, ImageBackground } from "react-native";
 import { List } from 'react-native-paper';
+import Backarrow from "../../components/BackArrow/backarrow"
+
 
 export function EscolherHorario(props) {
     return (
@@ -8,6 +10,7 @@ export function EscolherHorario(props) {
             source={require('../../assets/Bgs/BackgroundColor.png')}
             style={{ width: 400, height: 1000 }}
         >
+            <Backarrow />
             <View style={{ width: "75%", alignSelf: "center" }}>
                 <Text style={styleescolherHorario.title}>Horários de Voo</Text>
                 <List.AccordionGroup >

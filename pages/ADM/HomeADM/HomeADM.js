@@ -7,6 +7,14 @@ export function HomeADM(props) {
             source={require('../../../assets/Bgs/BackgroundColor.png')}
             style={{ width: 400, height: 1000 }}
         >
+            <TouchableOpacity onPress={() => props.navigation.navigate("Login")} style={{margin: "1em"}}>
+                <Icon
+                    source="logout"
+                    color="black"
+                    size={30}
+                />
+            </TouchableOpacity>
+
             <Text style={styleHomeADM.title}>Ações administrativas</Text>
             <TouchableOpacity style={styleHomeADM.option} onPress={() => props.navigation.navigate("CadastroHotel")}>
                 <Icon

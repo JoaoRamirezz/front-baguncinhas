@@ -1,4 +1,5 @@
 import { View, StyleSheet, Text, ImageBackground, TouchableOpacity } from "react-native";
+import Backarrow from "../../../components/BackArrow/backarrow"
 
 export function CadastroPassagem(props) {
     return (
@@ -6,7 +7,8 @@ export function CadastroPassagem(props) {
             source={require('../../../assets/Bgs/BackgroundColor.png')}
             style={{ width: 400, height: 1000 }}
         >
-             <Text style={styleCadastroPassagem.title}>Cadastrar Passagem</Text>
+            <Backarrow />
+            <Text style={styleCadastroPassagem.title}>Cadastrar Passagem</Text>
         </ImageBackground>
     )
 }

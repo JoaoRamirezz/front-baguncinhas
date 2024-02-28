@@ -1,14 +1,16 @@
 import { View, StyleSheet, Text, ImageBackground } from "react-native";
 import { Image } from "react-bootstrap";
-import { Icon, MD3Colors } from 'react-native-paper';
+import { Icon } from 'react-native-paper';
 import { TouchableOpacity } from "react-native-web";
+import Backarrow from "../../components/BackArrow/backarrow"
 
-export function Quarto(props) {
+export function SelectedRoom(props) {
     return (
         <> <ImageBackground
             source={require('../../assets/Bgs/BackgroundColor.png')}
             style={{ width: 400, height: 1000 }}
         >
+            <Backarrow />
             <View style={styleQuarto.flexDiv}>
                 <Image
                     style={styleQuarto.QuartoImg}
