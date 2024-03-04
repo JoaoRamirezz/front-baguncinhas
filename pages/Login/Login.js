@@ -26,10 +26,11 @@ export function Login(props) {
       },
     };
     const res = await axios.get("http://localhost:8080/api/auth", config)
-    console.log(res)
 
     if (res.status === 200 || res.status === 204) {
-      sessionStorage.setItem("token", res.data)
+      var jsonString = JSON.stringify(data)
+      sessionStorage.setItem("token", jsonString)
+      console.log("res.data", res.data)
       if(res.data.isAdmin)
         props.navigation.navigate("HomeADM")
       else
