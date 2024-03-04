@@ -28,11 +28,11 @@ export default function App() {
     <utilsContext.Provider value={{ data, setData }}>
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen name="Login" component={Login} options={{headerShown: false, headerTransparent: true}}/>
           <Stack.Screen name="CardRegister" component={CardRegister} options={{headerShown: false, headerTransparent: true}}/>
           <Stack.Screen name="Cards" component={Card} options={{headerShown: false, headerTransparent: true}}/>
           <Stack.Screen name="Home" component={Home} options={{headerShown: false, headerTransparent: true}}/>
           <Stack.Screen name="UserPage" component={UserPage} options={{headerShown: false, headerTransparent: true}}/>
-          <Stack.Screen name="Login" component={Login} options={{headerShown: false, headerTransparent: true}}/>
           <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false, headerTransparent: true}}/>
           <Stack.Screen name="SelectedPackage" component={SelectedPackage} options={{headerShown: false, headerTransparent: true}}/>
           <Stack.Screen name="SelectedHotel" component={SelectedHotel} options={{headerShown: false, headerTransparent: true}}/>

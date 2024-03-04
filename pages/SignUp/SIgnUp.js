@@ -12,15 +12,15 @@ import { TextInput, Button } from 'react-native-paper';
 
 
 export function SignUp(props) {
-  const [firstName, setNome] = useState("");
-  const [lastName, setSobrenome] = useState("");
+  const [firstName, setName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [cpf, setCPF] = useState("");
 
-  const signUp = async () => {
+  const login = async () => {
     // Password didn't match
     if (password !== confirmPassword) return;
 
@@ -33,10 +33,13 @@ export function SignUp(props) {
       lastName,
       password,
       birthday: new Date(age),
-      CPF: cpf,
+      cpf: cpf,
     };
+    console.log(data)
 
     const res = await axios.post("http://localhost:8080/api/user/", data);
+
+
     if (res.status === 201) {
       sessionStorage.setItem("token", res.data)
       props.navigation.navigate("Login");
@@ -49,60 +52,64 @@ export function SignUp(props) {
       style={{ width: 400, height: 1000 }}
     >
       <View style={StyleSignUp.bg}>
-
-
         <View>
           <Image
             style={StyleSignUp.Logo}
             source={require('../../assets/LogoBgcPlanes.png')}
           />
+
+          <View style={StyleSignUp.twoInputs}>
+            <TextInput
+              label="Primeiro Nome"
+              onChangeText={(text) => setName(text)}
+              mode="outlined"
+              style={StyleSignUp.inputPass}
+            />
+
+            <TextInput
+              label="Ultimo Nome"
+              onChangeText={(text) => setLastName(text)}
+              mode="outlined"
+              style={StyleSignUp.inputPass}
+            />
+          </View>
+
           <TextInput
-            label="Primeiro Nome"
+            label="Email"
             onChangeText={(text) => setEmail(text)}
             mode="outlined"
             style={StyleSignUp.input}
           />
 
-          <TextInput
-            label="Ultimo Nome"
-            onChangeText={(text) => setPassword(text)}
-            mode="outlined"
-            style={StyleSignUp.input}
-            textColor="white"
-          />
-
-          <View style={StyleSignUp.passwordConfirm}>
+          <View style={StyleSignUp.twoInputs}>
             <TextInput
               label="Senha"
               onChangeText={(text) => setPassword(text)}
               mode="outlined"
               style={StyleSignUp.inputPass}
-              textColor="white"
             />
 
             <TextInput
               label="Confirmar Senha"
-              onChangeText={(text) => setPassword(text)}
+              onChangeText={(text) => setConfirmPassword(text)}
               mode="outlined"
               style={StyleSignUp.inputPass}
-              textColor="white"
             />
           </View>
 
           <TextInput
             label="CPF"
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={(text) => setCPF(text)}
             mode="outlined"
             style={StyleSignUp.input}
-            textColor="white"
           />
           <TextInput
             label="Data de Nascimento"
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={(text) => setAge(text)}
             mode="outlined"
             style={StyleSignUp.input}
-            textColor="white"
           />
+
         </View>
 
 
@@ -168,7 +175,7 @@ const StyleSignUp = StyleSheet.create({
     textAlign: "center"
   },
 
-  passwordConfirm: {
+  twoInputs: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly",

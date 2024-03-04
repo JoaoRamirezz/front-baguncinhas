@@ -27,11 +27,11 @@ export function UserPage() {
                     Email: <b>fulanociclano@email.com</b>
                 </Text>
 
-                <Button mode="contained" style={{ marginTop: 15 }} buttonColor={"#AF714F"}>
+                <Button mode="contained" style={{marginTop: 15 , width: "80%", alignSelf:"center", borderRadius:5}} buttonColor={"#AF714F"}>
                     Editar
                 </Button>
 
-                <Button mode="contained" style={{ marginTop: 15 }} buttonColor={"#AF714F"}>
+                <Button mode="contained" style={{marginTop: 15 , width: "80%", alignSelf:"center", borderRadius:5}} buttonColor={"#AF714F"}>
                     Reservas
                 </Button>
 
