@@ -62,8 +62,10 @@ export function CadastroQuarto(props) {
             <Backarrow />
             <Text style={styleCadastroQuarto.title}>Cadastrar Quarto</Text>
 
+            <Text style={styleCadastroQuarto.label}>Hotel:</Text>
             <Picker
                 selectedValue={hotel}
+                style={styleCadastroQuarto.select}
                 onValueChange={(itemValue, itemIndex) =>
                     setHotel(itemValue)
                 }>
@@ -127,4 +129,18 @@ const styleCadastroQuarto = StyleSheet.create({
         backgroundColor: "#AF714F",
         borderRadius: 20
     },
+    select:{
+        height: "5%",
+        alignSelf: "center",
+        padding: 10,
+        borderColor: 'rgba(255,255,255,0.5)',
+        borderRadius: 20,
+        width: "60%"
+    },
+    label:{
+        height: "5%",
+        width: "60%",
+        alignSelf: "center",
+        fontSize: "20px"
+    }
 })
