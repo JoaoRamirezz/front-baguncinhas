@@ -26,29 +26,17 @@ export function Login(props) {
       },
     };
     const res = await axios.get("http://localhost:8080/api/auth", config)
+    console.log(res)
 
     if (res.status === 200 || res.status === 204) {
       sessionStorage.setItem("token", res.data)
-      props.navigation.navigate("Home")
+      if(res.data.isAdmin)
+        props.navigation.navigate("HomeADM")
+      else
+        props.navigation.navigate("Home")
     }
 
   };
-
-  // const login = async () => {
-  //   const data = {
-  //     email,
-  //     password
-  //   }
-
-  //   axios
-  //   const res = await axios.post("http://localhost:8080/api/user/login", data);
-
-  //   if (res.status === 200) {
-  //     sessionStorage.setItem("token", res.data)
-  //     props.navigation.navigate("Home")
-  //   }
-  // }
-
 
   return (
     <ImageBackground
@@ -56,8 +44,6 @@ export function Login(props) {
       style={{ width: 400, height: 1000 }}
     >
       <View style={styleLogin.bg}>
-
-
         <View>
           <Image
             style={styleLogin.Logo}
@@ -71,7 +57,6 @@ export function Login(props) {
             style={styleLogin.input}
           />
 
-
           <TextInput
             label="Senha"
             onChangeText={(text) => setPassword(text)}
@@ -79,7 +64,6 @@ export function Login(props) {
             style={styleLogin.input}
           />
         </View>
-
 
         <View style={styleLogin.buttonLogin}>
           <Button mode="contained" onPress={() => login()} style={styleLogin.button}>
@@ -92,8 +76,6 @@ export function Login(props) {
             <Text style={styleLogin.textbutton}>Ainda não possui uma conta? Cadastre-se</Text>
           </TouchableOpacity>
         </View>
-
-
       </View >
     </ImageBackground>
   );

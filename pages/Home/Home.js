@@ -6,14 +6,14 @@ import axios from "axios";
 export function Home(props) {
     const [hoteis, setHoteis] = useState([])
 
-    // useEffect(() => {
-    //     async function getData() {
-    //         const res = await axios.get('http://localhost:8080/api/hotel/')
-    //         setHoteis(res.data)
-    //     }
+    useEffect(() => {
+        async function getData() {
+            const res = await axios.get('http://localhost:8080/api/hotel/')
+            setHoteis(res.data)
+        }
 
-    //     getData()
-    // }, [])
+        getData()
+    }, [])
 
     return (
         <>
@@ -26,22 +26,28 @@ export function Home(props) {
                     {hoteis.map((hotel, index) => {
                         return (
                             <View style={styleHome.Hotel} key={index}>
-                                <Image
-                                    style={styleHome.HotelImg}
-                                    source={require('../../assets/image3.png')}
-                                />
+                                {
+                                    hoteis.map((hotel, index) => (
+                                        <>
+                                            <Image
+                                                style={styleHome.HotelImg}
+                                                source={require('../../assets/image3.png')}
+                                            />
 
-                                <Text style={styleHome.HotelName}>{hotel.name}</Text>
-                                <Text style={styleHome.HotelDate}>5-10 nov</Text>
-                                <Text style={styleHome.HotelPrice}>R$ {hotel.bestPrice}.00</Text>
-                                <TouchableOpacity style={styleHome.HotelButton}>
-                                    <Text style={styleHome}>Reservar</Text>
-                                </TouchableOpacity>
+                                            <Text key={index} style={styleHome.HotelName}>{hotel.name}</Text>
+                                            <Text key={index} style={styleHome.HotelDate}>{hotel}</Text>
+                                            <Text key={index} style={styleHome.HotelPrice}>R$ {hotel.bestPrice}.00</Text>
+                                            <TouchableOpacity style={styleHome.HotelButton}>
+                                                <Text style={styleHome}>Reservar</Text>
+                                            </TouchableOpacity>
+                                        </>
+                                    ))
+                                }
                             </View>
                         )
                     })}
 
-
+                    {/* 
                     <View style={styleHome.Hotel}>
                         <Image
                             style={styleHome.HotelImg}
@@ -54,7 +60,7 @@ export function Home(props) {
                         <TouchableOpacity style={styleHome.HotelButton} onPress={() => props.navigation.navigate("SelectedPackage")}>
                             <Text style={styleHome}>Ver Mais</Text>
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
                 </View>
             </ImageBackground>
         </>

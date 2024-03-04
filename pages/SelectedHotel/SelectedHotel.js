@@ -2,7 +2,7 @@ import { Image } from "react-bootstrap";
 import Navbar from "../../components/Navbar/navbar";
 import { View, StyleSheet, Text, ImageBackground } from "react-native";
 import { TouchableOpacity } from "react-native-web";
-import { WebView } from 'react-native-webview';
+import Backarrow from "../../components/BackArrow/backarrow";
 
 export function SelectedHotel(props) {
     return (
@@ -10,6 +10,7 @@ export function SelectedHotel(props) {
             <ImageBackground
                 source={require('../../assets/Bgs/BackgroundColor.png')}
                 style={{ width: 400, height: 1000 }}>
+                    <Backarrow />
                 <Navbar />
 
                 <Image
@@ -28,7 +29,7 @@ export function SelectedHotel(props) {
 
                 <Text style={{ alignSelf: "center", fontSize: "15px", marginTop: "2em" }}>Contato: <Text style={styleSelectedHotel.negrito}>(41) 99876-4510</Text></Text>
                 <Text style={{ alignSelf: "center", fontSize: "15px" }}>Email: <Text style={styleSelectedHotel.negrito}>hotelbonito@hotel.com</Text></Text>
-                <TouchableOpacity style={styleSelectedHotel.verQuartos} onPress={() => props.navigation.navigate("Quarto")}>Ver quartos</TouchableOpacity>
+                <TouchableOpacity style={styleSelectedHotel.verQuartos} onPress={() => props.navigation.navigate("SelectedRoom")}>Ver quartos</TouchableOpacity>
             </ImageBackground>
         </>
     )

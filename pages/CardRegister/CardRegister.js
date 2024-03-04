@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, ImageBackground } from "react-native"
+import { Text, StyleSheet, View, ImageBackground, Image } from "react-native"
 import Backarrow from "../../components/BackArrow/backarrow"
 import { TextInput, Button } from "react-native-paper"
 import { useState } from "react"
