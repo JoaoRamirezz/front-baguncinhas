@@ -8,7 +8,7 @@ import { Picker } from '@react-native-picker/picker';
 
 
 export function CadastroQuarto(props) {
-    const [hotel, setHotel] = useState("")
+    const [hotel, setHotel] = useState()
     const [doubleBed, setDoubleBed] = useState("")
     const [singleBed, setSingleBed] = useState("")
     const [daily, setDaily] = useState("")
@@ -31,10 +31,10 @@ export function CadastroQuarto(props) {
         };
 
         const data = {
-            hotel,
-            doubleBed,
-            singleBed,
-            daily,
+            hotelId: hotel,
+            doubleBed: parseInt(doubleBed),
+            singleBed: parseInt(singleBed),
+            daily: parseFloat(daily),
             name
         }
 
@@ -67,7 +67,7 @@ export function CadastroQuarto(props) {
                 selectedValue={hotel}
                 style={styleCadastroQuarto.select}
                 onValueChange={(itemValue, _) =>
-                    setHotel(itemValue)
+                    setHotel(parseInt(itemValue))
                 }>
                 {hoteis.map((h) => <Picker.Item label={h.name} value={h.id} />)}
             </Picker>
@@ -86,7 +86,7 @@ export function CadastroQuarto(props) {
 
             <TextInput
                 label="Daily"
-                onChangeText={(text) => setDiary(text)}
+                onChangeText={(text) => setDaily(text)}
                 mode="outlined"
                 style={styleCadastroQuarto.input} />
 

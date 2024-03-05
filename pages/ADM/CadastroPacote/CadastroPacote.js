@@ -111,7 +111,7 @@ export function CadastroPacote(props) {
                     setIda(itemValue)
                 }>
 
-                {passagens.map((i) => <Picker.Item label={`${i.arrivalAddress} -> ${i.derpartureAddress}`} value={i.id} />)}
+                {passagens.map((i) => <Picker.Item label={`${i.arrivalAddress} -> ${i.departureAddress}`} value={i.id} />)}
             </Picker>
 
             <Text style={styleCadastroPacote.label}>Passagem de Volta:</Text>
@@ -122,7 +122,7 @@ export function CadastroPacote(props) {
                     setVolta(itemValue)
                 }>
 
-                {passagens.map((h) => <Picker.Item label={`${h.arrivalAddress} -> ${h.derpartureAddress}`} value={h.id} />)}
+                {passagens.map((h) => <Picker.Item label={`${h.arrivalAddress} -> ${h.departureAddress}`} value={h.id} />)}
             </Picker>
 
             <Button mode="contained" onPress={() => cadastrar()} style={styleCadastroPacote.button}>

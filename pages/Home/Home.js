@@ -73,7 +73,7 @@ export function Home(props) {
                                 <Text key={index} style={styleHome.HotelName}>{pacotess.ida} - {pacotess.volta}</Text>
                                 <Text key={index} style={styleHome.HotelDate}>{pacotess.idaData} - {pacotess.voltaData} Nov</Text>
                                 <Text key={index} style={styleHome.HotelPrice}>{pacotess.preço}</Text>
-                                <TouchableOpacity style={styleHome.HotelButton}>
+                                <TouchableOpacity style={styleHome.HotelButton} onPress={() => props.navigation.navigate("SelectedPackage")}>
                                     <Text style={styleHome}>Reservar</Text>
                                 </TouchableOpacity>
                             </View>

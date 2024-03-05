@@ -10,7 +10,7 @@ import { TextInput, Button } from "react-native-paper";
 export function CadastroPassagem(props) {
     const [price, setPrice] = useState("")
     const [classId, setClassId] = useState("")
-    const [derpartureAddress, setOutAdress] = useState("")
+    const [departureAddress, setOutAdress] = useState("")
     const [departureDateTime, setOutDate] = useState("")
     const [arrivalAddress, setArrivalAdress] = useState("")
     const [arrivalDateTime, setArrivalDate] = useState("")
@@ -48,7 +48,7 @@ export function CadastroPassagem(props) {
         const data = {
             price,
             classId,
-            derpartureAddress,
+            departureAddress,
             departureDateTime,
             arrivalAddress,
             arrivalDateTime,
