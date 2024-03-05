@@ -4,12 +4,51 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export function Home(props) {
-    const [hoteis, setHoteis] = useState([])
+    const [pacotes, setPacotes] = useState([])
+
+    const pacotess = [
+        {
+          "ida": "São Paulo",
+          "volta": "Curitiba",
+          "idaData": "5",
+          "voltaData": "10",
+          "preço": "1980,00"
+        },
+        {
+          "ida": "Rio de Janeiro",
+          "volta": "Florianópolis",
+          "idaData": "8",
+          "voltaData": "15",
+          "preço": "2200,00"
+        },
+        {
+          "ida": "Belo Horizonte",
+          "volta": "Porto Alegre",
+          "idaData": "12",
+          "voltaData": "20",
+          "preço": "2500,00"
+        },
+        {
+          "ida": "Brasília",
+          "volta": "Salvador",
+          "idaData": "10",
+          "voltaData": "18",
+          "preço": "1800,00"
+        },
+        {
+          "ida": "Recife",
+          "volta": "Fortaleza",
+          "idaData": "6",
+          "voltaData": "14",
+          "preço": "2100,00"
+        }
+      ];
+      
 
     useEffect(() => {
         async function getData() {
-            const res = await axios.get('http://localhost:8080/api/hotel/')
-            setHoteis(res.data)
+            const res = await axios.get('http://localhost:8080/api/package/')
+            setPacotes(res.data)
         }
 
         getData()
@@ -23,26 +62,20 @@ export function Home(props) {
             >
                 <Navbar />
                 <View style={styleHome.bg}>
-                    {hoteis.map((hotel, index) => {
+                    {pacotess.map((pacotess, index) => {
                         return (
                             <View style={styleHome.Hotel} key={index}>
-                                {
-                                    hoteis.map((hotel, index) => (
-                                        <>
-                                            <Image
-                                                style={styleHome.HotelImg}
-                                                source={require('../../assets/image3.png')}
-                                            />
+                                <Image
+                                    style={styleHome.HotelImg}
+                                    source={require('../../assets/image3.png')}
+                                />
 
-                                            <Text key={index} style={styleHome.HotelName}>{hotel.name}</Text>
-                                            <Text key={index} style={styleHome.HotelDate}>{hotel}</Text>
-                                            <Text key={index} style={styleHome.HotelPrice}>R$ {hotel.bestPrice}.00</Text>
-                                            <TouchableOpacity style={styleHome.HotelButton}>
-                                                <Text style={styleHome}>Reservar</Text>
-                                            </TouchableOpacity>
-                                        </>
-                                    ))
-                                }
+                                <Text key={index} style={styleHome.HotelName}>{pacotess.ida} - {pacotess.volta}</Text>
+                                <Text key={index} style={styleHome.HotelDate}>{pacotess.idaData} - {pacotess.voltaData} Nov</Text>
+                                <Text key={index} style={styleHome.HotelPrice}>{pacotess.preço}</Text>
+                                <TouchableOpacity style={styleHome.HotelButton}>
+                                    <Text style={styleHome}>Reservar</Text>
+                                </TouchableOpacity>
                             </View>
                         )
                     })}
