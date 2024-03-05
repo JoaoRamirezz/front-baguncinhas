@@ -66,11 +66,10 @@ export function CadastroQuarto(props) {
             <Picker
                 selectedValue={hotel}
                 style={styleCadastroQuarto.select}
-                onValueChange={(itemValue, itemIndex) =>
+                onValueChange={(itemValue, _) =>
                     setHotel(itemValue)
                 }>
-
-                {hoteis.map((h) => <Picker.Item label={h.name} value={h.name} />)}
+                {hoteis.map((h) => <Picker.Item label={h.name} value={h.id} />)}
             </Picker>
 
             <TextInput

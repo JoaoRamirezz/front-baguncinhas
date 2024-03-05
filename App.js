@@ -29,7 +29,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false, headerTransparent: true }} />
-          <Stack.Screen name="CadastroPassagem" component={CadastroPassagem} options={{ headerShown: false, headerTransparent: true }} /> 
+          <Stack.Screen name="CadastroPassagem" component={CadastroPassagem} options={{ headerShown: false, headerTransparent: true }} />
           <Stack.Screen name="Home" component={Home} options={{ headerShown: false, headerTransparent: true }} />
           <Stack.Screen name="CardRegister" component={CardRegister} options={{ headerShown: false, headerTransparent: true }} />
           <Stack.Screen name="Cards" component={Card} options={{ headerShown: false, headerTransparent: true }} />
